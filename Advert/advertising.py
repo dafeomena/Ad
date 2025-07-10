@@ -4,9 +4,7 @@ import joblib
 import os
 import numpy as np
 
-# Debug: Show current directory and files
-st.write("Current working directory:", os.getcwd())
-st.write("Files in directory:", os.listdir())
+
 
 # Correct model path - points to the Advert folder
 model_path = os.path.join("Advert", "sales_model.pkl")
