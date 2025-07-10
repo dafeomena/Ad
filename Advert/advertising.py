@@ -4,16 +4,18 @@ import joblib
 import os
 import numpy as np
 
-# Debug: Show current directory and files (helps troubleshoot)
+# Debug: Show current directory and files
 st.write("Current working directory:", os.getcwd())
 st.write("Files in directory:", os.listdir())
 
+# Correct model path - points to the Advert folder
+model_path = os.path.join("Advert", "sales_model.pkl")
+
 # Load model with enhanced error handling
 try:
-    model_path = "sales_model.pkl"
     if os.path.exists(model_path):
         model = joblib.load(model_path)
-        st.success("✅ Model loaded successfully!")
+        st.success("✅ Model loaded successfully from Advert folder!")
     else:
         st.error(f"❌ Model file not found at: {os.path.abspath(model_path)}")
         st.stop()  # Halt the app if model is missing
@@ -21,7 +23,7 @@ except Exception as e:
     st.error(f"🔥 Error loading model: {str(e)}")
     st.stop()
 
-# --- Only runs if model loaded successfully ---
+# --- Rest of your app ---
 st.title("📈 Advertising Budget → Sales Predictor")
 
 # User inputs
